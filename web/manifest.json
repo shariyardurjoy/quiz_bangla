@@ -1,6 +1,6 @@
 {
-    "name": "quiz_bangla",
-    "short_name": "quiz_bangla",
+    "name": "QuizBangla",
+    "short_name": "QuizBangla",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

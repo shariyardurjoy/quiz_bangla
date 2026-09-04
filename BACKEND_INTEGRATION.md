@@ -3,6 +3,8 @@
 Backend base URL:
 `https://bdappsdigitalapps.com/QuizBangla`
 
+Supported Operators: Robi (018) and Circle (016).
+
 Flutter calls only the PHP backend. The bdapps API key remains on the server and is never stored in the app.
 
 ## Flow

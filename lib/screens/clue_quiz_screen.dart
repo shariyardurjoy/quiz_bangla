@@ -21,10 +21,12 @@ class ClueQuizScreen extends StatefulWidget {
 
 class _ClueQuizScreenState extends State<ClueQuizScreen> {
   late final List<ClueQuestion> _questions;
+  late final List<List<String>> _optionOrders;
   int _index = 0;
   int _clueIndex = 0;
   int _score = 0;
   int _correct = 0;
+  int _firstClueSolves = 0;
   int _streak = 0;
   bool _showOptions = false;
   bool _locked = false;
@@ -35,12 +37,25 @@ class _ClueQuizScreenState extends State<ClueQuizScreen> {
   @override
   void initState() {
     super.initState();
-    final shuffled = [...widget.sourceQuestions]..shuffle(Random());
-    _questions = shuffled.take(min(5, shuffled.length)).toList();
+    final random = Random();
+    final shuffled = [...widget.sourceQuestions]..shuffle(random);
+    _questions = shuffled.take(min(10, shuffled.length)).toList();
+    _optionOrders = _questions.map((q) {
+      final options = [...q.options]..shuffle(random);
+      return options;
+    }).toList();
   }
 
   ClueQuestion get _question => _questions[_index];
   int get _potentialPoints => _points[_clueIndex];
+  List<String> get _currentOptions => _optionOrders[_index];
+
+  String get _challengePrompt {
+    final category = _question.category;
+    if (category == 'Bangladesh Places') return 'WHICH PLACE AM I?';
+    if (category == 'Famous People') return 'WHO AM I?';
+    return 'WHAT AM I?';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,9 +113,20 @@ class _ClueQuizScreenState extends State<ClueQuizScreen> {
                   ),
                   const SizedBox(height: 18),
                   Text(
-                    'WHO / WHAT AM I?',
+                    _challengePrompt,
                     textAlign: TextAlign.center,
                     style: TextStyle(color: scheme.primary, fontWeight: FontWeight.w900, letterSpacing: 1.3),
+                  ),
+                  const SizedBox(height: 6),
+                  Center(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 6),
+                      decoration: BoxDecoration(
+                        color: scheme.surfaceContainerHighest,
+                        borderRadius: BorderRadius.circular(999),
+                      ),
+                      child: Text(_question.category, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
+                    ),
                   ),
                   const SizedBox(height: 12),
                   ...List.generate(_clueIndex + 1, (i) {
@@ -159,7 +185,7 @@ class _ClueQuizScreenState extends State<ClueQuizScreen> {
                   ] else ...[
                     Text('Choose your answer', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800)),
                     const SizedBox(height: 10),
-                    ..._question.options.map((option) => _AnswerButton(
+                    ..._currentOptions.map((option) => _AnswerButton(
                           label: option,
                           selected: _selected == option,
                           correctAnswer: _locked ? _question.answer : null,
@@ -217,6 +243,7 @@ class _ClueQuizScreenState extends State<ClueQuizScreen> {
       if (isCorrect) {
         earned = _potentialPoints;
         _correct++;
+        if (_clueIndex == 0) _firstClueSolves++;
         _streak++;
         if (_streak % 3 == 0) earned += 20;
         _score += earned;
@@ -247,6 +274,7 @@ class _ClueQuizScreenState extends State<ClueQuizScreen> {
             score: _score,
             correct: _correct,
             total: _questions.length,
+            firstClueSolves: _firstClueSolves,
             sourceQuestions: widget.sourceQuestions,
           ),
         ),

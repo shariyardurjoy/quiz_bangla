@@ -8,6 +8,7 @@ class ResultScreen extends StatelessWidget {
   final int score;
   final int correct;
   final int total;
+  final int firstClueSolves;
   final List<ClueQuestion> sourceQuestions;
 
   const ResultScreen({
@@ -16,6 +17,7 @@ class ResultScreen extends StatelessWidget {
     required this.score,
     required this.correct,
     required this.total,
+    required this.firstClueSolves,
     required this.sourceQuestions,
   });
 
@@ -59,11 +61,14 @@ class ResultScreen extends StatelessWidget {
                         Text('$score', style: TextStyle(fontSize: 48, fontWeight: FontWeight.w900, color: scheme.primary)),
                         const Text('POINTS', style: TextStyle(fontWeight: FontWeight.w800, letterSpacing: 1.4)),
                         const SizedBox(height: 22),
-                        Row(
+                        Wrap(
+                          spacing: 10,
+                          runSpacing: 10,
+                          alignment: WrapAlignment.center,
                           children: [
-                            Expanded(child: _ResultStat(label: 'Correct', value: '$correct/$total')),
-                            const SizedBox(width: 12),
-                            Expanded(child: _ResultStat(label: 'Accuracy', value: '$accuracy%')),
+                            _ResultStat(label: 'Correct', value: '$correct/$total'),
+                            _ResultStat(label: 'Accuracy', value: '$accuracy%'),
+                            _ResultStat(label: 'Clue 1 solves', value: '$firstClueSolves'),
                           ],
                         ),
                       ],
@@ -121,7 +126,9 @@ class _ResultStat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
+      width: 145,
+      child: Container(
       padding: const EdgeInsets.symmetric(vertical: 14),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
@@ -133,6 +140,7 @@ class _ResultStat extends StatelessWidget {
           const SizedBox(height: 2),
           Text(label, style: Theme.of(context).textTheme.bodySmall),
         ],
+      ),
       ),
     );
   }

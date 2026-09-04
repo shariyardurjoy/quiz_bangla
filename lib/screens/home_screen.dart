@@ -190,7 +190,7 @@ class _HeroCard extends StatelessWidget {
                 SizedBox(height: 8),
                 Text('How quickly can you guess it?', style: TextStyle(color: Colors.white, fontSize: 30, height: 1.1, fontWeight: FontWeight.w900)),
                 SizedBox(height: 10),
-                Text('Three clues. One answer. Fewer clues = more points.', style: TextStyle(color: Colors.white70, fontSize: 15)),
+                Text('10 mysteries per round. Three clues each. Fewer clues = more points.', style: TextStyle(color: Colors.white70, fontSize: 15)),
               ],
             ),
           ),
@@ -245,6 +245,13 @@ class _CategoryCard extends StatelessWidget {
                     Text(info.title, style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
                     const SizedBox(height: 4),
                     Text(info.subtitle, style: TextStyle(color: scheme.onSurfaceVariant, fontSize: 13)),
+                    const SizedBox(height: 5),
+                    Text(
+                      info.title == 'Mystery Mix'
+                          ? '${clueQuestions.length} mysteries available'
+                          : '${clueQuestions.where((q) => q.category == info.title).length} mysteries available',
+                      style: TextStyle(color: scheme.primary, fontSize: 12, fontWeight: FontWeight.w700),
+                    ),
                   ],
                 ),
               ),

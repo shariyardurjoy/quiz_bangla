@@ -300,7 +300,7 @@ class _SubscriptionGateState extends State<SubscriptionGate> {
                   ),
                   const SizedBox(height: 14),
                   Text(
-                    'Robi and Circle subscribers only. Robi (018) or Circle (016). BDT 2.78/day including VAT, SD and SC. Automatic daily renewal until unsubscribe. You can unsubscribe anytime from Settings.',
+                    'Robi and Cirkle subscribers only. Robi (018) or Cirkle (016). BDT 2.78/day including VAT, SD and SC. Automatic daily renewal until unsubscribe. You can unsubscribe anytime from Settings.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 12,

@@ -59,7 +59,7 @@ def main():
             <strong>Subscription Info:</strong>
             <ul>
                 <li>Platform: Android</li>
-                <li>Robi and Circle subscribers only. Robi (018) or Circle (016).</li>
+                <li>Robi and Cirkle subscribers only. Robi (018) or Cirkle (016).</li>
                 <li>Charge: BDT 2.78/day (including VAT, SD and SC).</li>
                 <li>Automatic daily renewal until unsubscribe.</li>
                 <li>Steps: Enter number &rarr; OTP &rarr; Wait for REGISTERED &rarr; Play!</li>
@@ -96,13 +96,13 @@ def main():
     <p>QuizBangla is a trivia challenge app where you solve mysteries about Bangladesh using up to 3 clues. The fewer clues you reveal, the more points you score.</p>
     
     <h2>2. Who can subscribe?</h2>
-    <p>Currently, the service is exclusively available for Robi and Circle subscribers in Bangladesh. Enter a valid Robi (018) or Circle (016) number to subscribe.</p>
+    <p>Currently, the service is exclusively available for Robi and Cirkle subscribers in Bangladesh. Enter a valid Robi (018) or Cirkle (016) number to subscribe.</p>
     
     <h2>3. What is the subscription charge?</h2>
     <p>The daily subscription fee is BDT 2.78 per day. This charge is inclusive of all taxes (VAT, SD, and SC).</p>
     
     <h2>4. How do I subscribe?</h2>
-    <p>Open the app, enter your Robi or Circle mobile number, and tap "Subscribe with OTP". Enter the OTP received via SMS. Once charging is successful, you will be REGISTERED and can access the clue challenge.</p>
+    <p>Open the app, enter your Robi or Cirkle mobile number, and tap "Subscribe with OTP". Enter the OTP received via SMS. Once charging is successful, you will be REGISTERED and can access the clue challenge.</p>
     
     <h2>5. Does the subscription renew automatically?</h2>
     <p>Yes. The subscription has an automatic daily renewal feature. You will be charged daily until you choose to unsubscribe.</p>
@@ -143,7 +143,7 @@ def main():
     <h2>2. Subscription & Access</h2>
     <ol>
         <li>Upon opening the app, you will see the subscription screen.</li>
-        <li>Enter your Robi (018) or Circle (016) mobile number.</li>
+        <li>Enter your Robi (018) or Cirkle (016) mobile number.</li>
         <li>Tap "Subscribe with OTP" and wait for the SMS.</li>
         <li>Enter the OTP. The system will process your initial charging (BDT 2.78/day incl. VAT/SD/SC).</li>
         <li>Once successful, your status will become REGISTERED and you can access the Home screen.</li>
